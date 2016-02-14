@@ -1,0 +1,43 @@
+<html>
+<head>
+<title>
+myGAME
+</title>
+<style>
+canvas{
+background-color:#eee;
+display:block;
+}
+</style>
+
+</head>
+<body>
+<canvas id='mycanvas' width='1280' height='640'></canvas>
+
+<script>
+
+var canvas = document.getElementById("mycanvas");
+var ctx = canvas.getContext("2d");
+ctx.beginPath();
+ctx.rect(20,20,100,50);
+ctx.rect(130,20,100,50);
+ctx.rect(240,20,100,50);
+ctx.rect(350,20,100,50);
+ctx.rect(460,20,100,50);
+ctx.fillStyle = '#0099cc';
+ctx.fill();
+ctx.closePath();
+
+
+ctx.beginPath();
+ctx.arc(500,500,20,0,Math.PI*2,true);
+ctx.fillStyle = '#33cc33';
+ctx.fill();
+ctx.strokeStyle = "rgba(0, 0, 255, 0.5)";
+ctx.stroke();
+ctx.closePath();
+
+</script>
+
+</body>
+</html>
