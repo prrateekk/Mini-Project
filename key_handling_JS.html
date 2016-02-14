@@ -1,0 +1,58 @@
+<html>
+<head>
+<title>
+myGAME
+</title>
+<style>
+canvas{
+background-color:#eee;
+display:block;
+}
+</style>
+
+</head>
+<body>
+<canvas id='mycanvas' width='1280' height='640'></canvas>
+
+<script>
+var canvas = document.getElementById("mycanvas");
+var ctx = canvas.getContext("2d");
+var r_pressed = false;
+var l_pressed = false;
+var paddle_ht = 10,paddle_wd = 75;
+var paddleX = (paddle_wd-paddle_ht)/2;
+
+function draw_paddle(){
+	ctx.beginPath();
+	ctx.rect(paddleX,canvas.height-paddle_ht-20,paddle_wd,paddle_ht);
+	ctx.fillStyle = '#66ccff';
+	ctx.fill();
+	ctx.closePath();
+}
+
+function draw(){
+	ctx.clearRect(0,0,canvas.width,canvas.height);
+	if (r_pressed==true && paddleX<canvas.width-paddle_wd-10) paddleX+=7;
+	else if (l_pressed==true && paddleX>10) paddleX-=7;
+	draw_paddle();
+}
+
+function keyDownHandler(key){
+	if (key.keyCode==39) r_pressed = true;
+	else if (key.keyCode==37) l_pressed = true;
+}
+
+function keyUpHandler(key){
+	if (key.keyCode==39) r_pressed = false;
+	else if (key.keyCode==37) l_pressed = false;
+}
+
+document.addEventListener("keydown",keyDownHandler,false);
+document.addEventListener("keyup",keyUpHandler,false);
+setInterval(draw,10);
+
+
+</script>
+
+</body>
+</html>
