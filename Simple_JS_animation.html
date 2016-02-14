@@ -1,0 +1,57 @@
+<html>
+<head>
+<title>
+myGAME
+</title>
+<style>
+canvas{
+background-color:#eee;
+display:block;
+}
+</style>
+
+</head>
+<body>
+<canvas id='mycanvas' width='1280' height='640'></canvas>
+
+<script>
+
+var canvas = document.getElementById("mycanvas");
+var ctx = canvas.getContext("2d");
+
+var r = 10,dr = 1,r2=10,dr2=1,r3=10,dr3=1;
+
+function drawball3(){
+	ctx.beginPath();
+	ctx.arc(400,300,r3+dr3,0,2*Math.PI);
+	ctx.fillStyle = '#ccffff';
+	ctx.fill();
+	ctx.closePath();
+	if (dr3<50) dr3+=1
+}
+
+function drawball2(){
+	ctx.beginPath();
+	ctx.arc(400,300,r2+dr2,0,2*Math.PI);
+	ctx.fillStyle = '#99ffcc';
+	ctx.fill();
+	ctx.closePath();
+	if (dr2<120) dr2+=1
+	else drawball3();
+}
+
+function drawball1(){
+	ctx.beginPath();
+	ctx.arc(400,300,r+dr,0,2*Math.PI);
+	ctx.fillStyle = '#33cccc';
+	ctx.fill();
+	ctx.closePath();
+	if (dr<190)
+	dr+=1;
+	else drawball2();
+}
+setInterval(drawball1,5);
+</script>
+
+</body>
+</html>
