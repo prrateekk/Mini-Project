@@ -1,0 +1,73 @@
+<html>
+<head>
+<title>Ball in a BOX</title>
+<style>
+canvas{
+background-color:#eee;
+border:black solid 2px;
+}
+</style>
+</head>
+
+<body>
+<center>
+<font face="courier"><h1>BALL IN A BOX</h1></font>
+<canvas id="mycanvas" width="500" height="500"></canvas><br>
+</center>
+<center><br>
+<button type="button" value="slow" onclick=reduce_speed()>Reduce SPEED</button>      
+<button type="button" value="fast" onclick=increase_speed()>Increase SPEED</button>  
+<button type="button" value="r_red" onclick=reduce_r()>Reduce Radius</button>
+<button type="button" value="r_in" onclick=increase_r()>Increase Radius</button>  
+</center>
+<hr>
+<h4>prrateekk@hotmail.com</h4>
+<script>
+var canvas = document.getElementById("mycanvas");
+var ctx = canvas.getContext("2d");
+var r = 35;
+var x=canvas.width/2;
+var y=canvas.height/2;
+var dx,dy;
+dx=-5;
+dy=6;
+var mul=1;
+
+function reduce_speed(){
+	mul/=1.2;
+}
+
+function increase_speed(){
+	mul*=1.2;
+}
+
+function increase_r(){
+	if (r<200) r+=5;
+}
+
+function reduce_r(){
+	if (r>5) r-=5;
+}
+
+function draw_ball(){
+	ctx.beginPath();
+	ctx.arc(x,y,r,0,2*Math.PI,false);
+	ctx.fillStyle = '#66ccff';
+	ctx.fill();
+	ctx.closePath();
+}
+
+function draw(){
+	ctx.clearRect(0,0,canvas.width,canvas.height);
+	if (x+r>=canvas.width||x<=r) dx*=-1;
+	if (y+r>=canvas.height||y<=r) dy*=-1;
+	x+=mul*dx;
+	y+=mul*dy;
+	draw_ball();
+}
+
+setInterval(draw,5);
+
+</script>
+</body>
+</html>
