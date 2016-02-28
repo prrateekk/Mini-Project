@@ -1,0 +1,56 @@
+<html>
+<head>
+<title>Ball in a BOX</title>
+<style>
+canvas{
+background-color:#eee;
+border:black solid 2px;
+}
+</style>
+</head>
+
+<body>
+<center>
+<font face="courier"><h1>BALL IN A BOX(GRAVITY)</h1></font>
+<canvas id="mycanvas" width="1000" height="500"></canvas><br>
+</center>
+<center><br>
+</center>
+<hr>
+<h4>prrateekk@hotmail.com</h4>
+<script>
+var canvas = document.getElementById("mycanvas");
+var ctx = canvas.getContext("2d");
+var r = 25 ;
+var x=canvas.width/2;
+var y=canvas.height/2;
+var dx,dy;
+dx=-3;
+dy=-4;
+var mul=1;
+var g = -0.1;
+
+
+function draw_ball(){
+	ctx.beginPath();
+	ctx.arc(x,y,r,0,2*Math.PI,false);
+	ctx.fillStyle = '#66ccff';
+	ctx.fill();
+	ctx.closePath();
+}
+
+function draw(){
+	ctx.clearRect(0,0,canvas.width,canvas.height);
+	if (x+r>=canvas.width||x<=r) dx*=-1;
+	if (y+r>=canvas.height||y<=r) dy*=-1;
+	x+=dx;
+	dy-=g;
+	y+=dy;
+	draw_ball();
+}
+
+setInterval(draw,7);
+
+</script>
+</body>
+</html>
